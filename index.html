@@ -2,7 +2,13 @@
 <html><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="support.js"></script>
+<script src="./support.js"></script>
+<template id="__bundler_thumbnail" data-bg-color="#0e0e0e">
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<circle cx="100" cy="100" r="60" fill="none" stroke="#f2f1ef" stroke-width="3" opacity="0.5"/>
+<text x="100" y="107" font-family="monospace" font-size="26" fill="#1857ff" text-anchor="middle">VS</text>
+</svg>
+</template>
 </head>
 <body>
 <x-dc>
@@ -55,7 +61,7 @@ html{scroll-behavior:smooth}
 <div data-stars="46" style="position:absolute;inset:0;pointer-events:none;z-index:2;overflow:hidden"></div>
 <div data-blob="1" style="position:absolute;top:0;left:0;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(24,87,255,.55),rgba(24,87,255,.16) 42%,rgba(24,87,255,0) 68%);filter:blur(30px);pointer-events:none;will-change:transform;opacity:.62;transition:opacity .7s ease"></div>
 
-<div data-print-hide="1" style="position:relative;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:26px clamp(18px,4.38vw,56px);border-bottom:1px solid rgba(242,241,239,.14)">
+<div data-print-hide="1" style="position:relative;z-index:4;display:flex;align-items:center;justify-content:space-between;padding:26px clamp(18px,4.38vw,56px);border-bottom:1px solid rgba(242,241,239,.14)">
 <div style="display:flex;flex-direction:column;gap:2px">
 <a href="#/" style="font:500 13px/1.2 'Instrument Sans',sans-serif;letter-spacing:-.01em">Valeryia Sadokha</a>
 <span style="font:400 10px/1 'Geist Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:rgba(242,241,239,.45)">Web &amp; Digital Designer</span>
@@ -915,7 +921,7 @@ html{scroll-behavior:smooth}
 <p style="margin:0;max-width:min(620px,100%);font:400 15.5px/1.6 'Instrument Sans',sans-serif;color:rgba(14,14,14,.7)">Seven years designing websites, landing pages and brand systems for startups, agencies and e-commerce. Research and structure through to build in Figma, Webflow, Wix, Shopify and Figma Sites. Coventry, UK — eligible to work in the UK.</p>
 </div>
 <div style="display:flex;flex-direction:column;gap:9px">
-<a href="uploads/Valeria_Sadoha_CV_Web_Digital_Designer.pdf" download="Valeria_Sadoha_CV_Web_Digital_Designer.pdf" style="cursor:pointer;align-self:flex-start;display:flex;align-items:center;gap:10px;padding:14px 24px;background:#1857ff;color:#fff;border-radius:100px;white-space:nowrap;font:500 12.5px/1 'Instrument Sans',sans-serif;transition:background .3s cubic-bezier(.2,.7,.2,1),transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s" style-hover="background:#0b3fd6;color:#fff;transform:translateY(-2px);box-shadow:0 10px 26px rgba(24,87,255,.35)">Download CV (PDF)<span style="font:400 10px 'Geist Mono',monospace;opacity:.7">↓ 180kb</span></a>
+<a onClick="{{ onPrint }}" style="cursor:pointer;align-self:flex-start;display:flex;align-items:center;gap:10px;padding:14px 24px;background:#1857ff;color:#fff;border-radius:100px;white-space:nowrap;font:500 12.5px/1 'Instrument Sans',sans-serif;transition:background .3s cubic-bezier(.2,.7,.2,1),transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s" style-hover="background:#0b3fd6;color:#fff;transform:translateY(-2px);box-shadow:0 10px 26px rgba(24,87,255,.35)">Download CV (PDF)<span style="font:400 10px 'Geist Mono',monospace;opacity:.7">↓ 180kb</span></a>
 <div style="font:400 10px/1.7 'Geist Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:rgba(14,14,14,.45)"><a href="mailto:lerasadoha@gmail.com">lerasadoha@gmail.com</a><br><a href="tel:+447440405647">+44 7440 405647</a><br><a href="https://www.linkedin.com/in/llsad/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://dribbble.com/llsad" target="_blank" rel="noopener">Dribbble</a> · <a href="https://www.upwork.com/freelancers/~0128d628771e807bfa" target="_blank" rel="noopener">Upwork</a></div>
 </div>
 </div>
@@ -1916,7 +1922,6 @@ class Component extends DCLogic {
         const f = e.target;
         if (!window.emailjs) { this.setState({submitStatus: 'error'}); return; }
         this.setState({submitStatus: 'sending'});
-        window.emailjs.init({publicKey:'cIud2g9ygBsvbf5QK'});
         window.emailjs.sendForm('service_2fh2lm2', 'template_rzh8znk', f).then(() => {
           this.setState({submitStatus: 'sent'});
           f.reset();
